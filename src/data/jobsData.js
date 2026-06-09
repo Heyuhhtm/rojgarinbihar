@@ -161,6 +161,53 @@ export const OTHER_LINKS = [
   { id: 9, title: "Pay Traffic e-Challan Online", category: "Parivahan", url: "https://echallan.parivahan.gov.in/" },
   { id: 10, title: "Driving License Services (Sarathi)", category: "Parivahan", url: "https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do" },
   { id: 11, title: "Vehicle Related Services (Vahan)", category: "Parivahan", url: "https://vahan.parivahan.gov.in/vahanservice/vahan/ui/statevalidation/homepage.xhtml" },
+
+  // Election (चुनाव)
+  { id: 12, title: "बिहार 2003 वोटर लिस्ट (Bihar Voter List 2003)", category: "Election", url: "https://voters.eci.gov.in/bh_2003_eroll" },
+  { id: 13, title: "2003 बिहार मतदाता सूची में नाम खोजें (Search Name in 2003 E-Roll)", category: "Election", url: "https://voters.eci.gov.in/bh_2003_eroll" },
+  { id: 14, title: "UP पंचायत चुनाव वोटर लिस्ट 2025 (UP Panchayat Election Voter List)", category: "Election", url: "https://sarkaricsc.com/up-gram-panchayat-chunav-2025/" },
+  { id: 15, title: "यूपी पंचायत चुनाव (प्रधानी) सीट आरक्षण (UP Panchayat Reservation)", category: "Election", url: "https://sarkaricsc.com/up-gram-panchayat-chunav-2025/" },
+  { id: 16, title: "राजस्थान ग्राम पंचायत चुनाव (सरपंच) 2025 (Rajasthan Sarpanch Chunav)", category: "Election", url: "https://sarkaricsc.com/rajasthan-sarpanch-chunav-2025/" },
+  { id: 17, title: "सरपंच / प्रधान / मुखिया किस काम का कितना पैसा निकला जांचें", category: "Election", url: "https://sarkaricsc.com/sarpanch-pradhan-ne-kitna-paisa-nikala/" },
+
+  // Land Records (तहसील के कार्य)
+  { id: 18, title: "जमीन विवाद में है या नहीं जाने (UP Bhulekh Land Dispute Status)", category: "Land Records", url: "https://upbhulekh.gov.in/#/home" },
+  { id: 19, title: "भू नक्शा - जमीन का नक्शा देखें (Bhu Naksha Map)", category: "Land Records", url: "https://sarkaricsc.com/bhu-naksha-जमीन-का-नक्शा-देखे/" },
+  { id: 20, title: "भूलेख राज्यवार सूची (Bhulekh State Wise Land Records)", category: "Land Records", url: "https://sarkaricsc.com/bhulekh-state-wise/" },
+
+  // Bijli Bill (बिजली बिल)
+  { id: 21, title: "चेक बिजली बिल ऑनलाइन (Check Electricity Bill Online)", category: "Bijli Bill", url: "https://sarkaricsc.com/bijli-bill-check/" },
+  { id: 22, title: "बिजली बिल राहत योजना 2025 (Bijli Bill Rahat Yojana)", category: "Bijli Bill", url: "https://sarkaricsc.com/bijli-bill-rahat-yojana/" },
+  { id: 23, title: "बिजली बिल राहत कैलकुलेटर (Bijli Bill Relief Calculator)", category: "Bijli Bill", url: "https://sarkaricsc.com/bijli-bill-rahat-yojana/" },
+  { id: 24, title: "UP बिजली से सम्बन्धित काम (UP Electricity Services)", category: "Bijli Bill", url: "https://sarkaricsc.com/up-bijli-bill/" },
+
+  // Mobile Services (सिम और मोबाइल)
+  { id: 25, title: "सञ्चार साथी - आपके नाम पर कितने सिम हैं जानें", category: "Mobile Services", url: "https://sarkaricsc.com/mobile-related-sanchar-sathi/" },
+  { id: 26, title: "चोरी / खोया हुआ मोबाइल ब्लॉक करें (Block Lost/Stolen Mobile)", category: "Mobile Services", url: "https://sarkaricsc.com/mobile-related-sanchar-sathi/" },
+  { id: 27, title: "खोया मोबाइल मिल जाने पर अनब्लॉक करें (Unblock Found Mobile)", category: "Mobile Services", url: "https://sarkaricsc.com/mobile-related-sanchar-sathi/" },
+  { id: 28, title: "जांचें मोबाइल चोरी का या डुप्लीकेट तो नहीं (Check Genuine Device)", category: "Mobile Services", url: "https://sarkaricsc.com/mobile-related-sanchar-sathi/" },
+
+  // Sarkari Kaam (सरकारी काम)
+  { id: 29, title: "MSME उद्यम रजिस्ट्रेशन सर्टिफिकेट (MSME Udyam Registration)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/msme-udyam-registration/" },
+  { id: 30, title: "फॉर्मर रजिस्ट्री (Farmer Registry Online)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/farmer-registry/" },
+  { id: 31, title: "पीएम उज्ज्वला नया गैस कनेक्शन आवेदन (PM Ujjwala Yojana)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/pm-ujjwala-yojana/" },
+  { id: 32, title: "पासपोर्ट सेवा ऑनलाइन आवेदन (Passport Seva Online)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/passport-seva/" },
+  { id: 33, title: "पीएम किसान सम्मान निधि योजना (PM Kisan Yojana)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/pm-kisan-yojana/" },
+  { id: 34, title: "पीएम आवास योजना ग्रामीण/शहरी (PM Awas Yojana)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/pm-awas-2/" },
+  { id: 35, title: "नरेगा जॉब कार्ड लिस्ट & हाज़िरी (NREGA Job Card)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/narega/" },
+  { id: 36, title: "ई श्रम कार्ड ऑनलाइन पंजीकरण (e-Shram Card Registration)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/eshram-card-2/" },
+  { id: 37, title: "आयुष्मान भारत गोल्डन हेल्थ कार्ड (Ayushman Card)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/ayushman-card/" },
+  { id: 38, title: "आभा डिजिटल हेल्थ कार्ड (ABHA Card)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/abha-card/" },
+  { id: 39, title: "APAAR ID कार्ड ऑनलाइन (APAAR Student ID Card)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/apaar-id-card/" },
+  { id: 40, title: "वोटर आईडी कार्ड डाउनलोड & सुधार (Voter ID Services)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/voter-id-card/" },
+  { id: 41, title: "शौचालय योजना ग्रामीण (Swachh Bharat Toilet Scheme Rs. 12000)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/free-shauchalay-yojana/" },
+  { id: 42, title: "गैस सब्सिडी ऑनलाइन देखें (LPG Gas Subsidy Status)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/gas-subsidy-checker/" },
+  { id: 43, title: "राशन कार्ड नई लिस्ट & आवेदन (Ration Card Services)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/ration-card-2/" },
+  { id: 44, title: "समग्र ID कार्ड (Samagra ID MP)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/samagra-id-card/" },
+  { id: 45, title: "NSP नेशनल स्कालरशिप पोर्टल OTR (NSP Scholarship)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/national-scholarship-portal/" },
+  { id: 46, title: "LPG Gas eKYC ऑनलाइन करें (LPG e-KYC Update)", category: "Sarkari Kaam", url: "https://sarkaricsc.com/pmuy-lpg-ekyc/" },
+  { id: 47, title: "बेरोजगारी भत्ता योजना आवेदन (Berozgari Bhatta Rs. 1500)", category: "Sarkari Kaam", url: "https://sewayojan.up.nic.in/IEP/JobseekerRegistration.aspx" },
+  { id: 48, title: "अन्तर्जातीय विवाह प्रोत्साहन योजना (Intercaste Marriage Scheme Rs. 2.5 Lakh)", category: "Sarkari Kaam", url: "https://saralharyana.gov.in/" },
 ];
 
 export const CATEGORIES = [
@@ -179,6 +226,11 @@ export const CATEGORIES = [
   { label: "UIDAI", color: "#d97706", bg: "#fffbeb" },
   { label: "PAN", color: "#854d0e", bg: "#fef9c3" },
   { label: "Post", color: "#e11d48", bg: "#fff1f2" },
+  { label: "Sarkari Kaam", color: "#008080", bg: "#e6f2f2" },
+  { label: "Election", color: "#1e3a8a", bg: "#eff6ff" },
+  { label: "Land Records", color: "#6b21a8", bg: "#faf5ff" },
+  { label: "Bijli Bill", color: "#b45309", bg: "#fffbeb" },
+  { label: "Mobile Services", color: "#0369a1", bg: "#f0f9ff" },
 ];
 
 export const TICKER_ITEMS = [

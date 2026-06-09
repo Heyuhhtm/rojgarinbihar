@@ -12,15 +12,18 @@ export default function Sidebar({ setPage, setCatFilter, onViewDetails }) {
           { label: "Admit Card 2026", page: "admitcard", color: "#e65c00" },
           { label: "Answer Key 2026", page: "answerkey", color: "#6a1b9a" },
           { label: "Syllabus 2026", page: "syllabus", color: "#1565c0" },
+          { label: "Sarkari Kaam (Services)", page: "otherlinks", color: "#008080", filter: "Sarkari Kaam" },
           { label: "Contact Us", page: "contact", color: "#37474f" },
         ].map(link => (
           <div
-            key={link.page}
+            key={link.label}
             className="sidebar-link"
             style={{ color: link.color }}
             onClick={() => {
               if (link.page === 'jobs') {
                 setCatFilter('All');
+              } else if (link.page === 'otherlinks') {
+                setCatFilter(link.filter || 'Sarkari Kaam');
               }
               setPage(link.page);
             }}

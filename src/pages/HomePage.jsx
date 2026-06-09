@@ -12,7 +12,7 @@ export default function HomePage({ setPage, setCatFilter, onViewDetails }) {
         <StatsBanner />
         <CategoriesGrid onFilter={category => {
           setCatFilter(category);
-          if (["UIDAI", "PAN", "Parivahan"].includes(category)) {
+          if (["UIDAI", "PAN", "Parivahan", "Sarkari Kaam", "Election", "Land Records", "Bijli Bill", "Mobile Services"].includes(category)) {
             setPage("otherlinks");
           } else {
             setPage("jobs");

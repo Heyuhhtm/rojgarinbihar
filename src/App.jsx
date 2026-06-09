@@ -28,6 +28,7 @@ export default function App() {
     { label: "Admit Card", page: "admitcard", icon: "🎫" },
     { label: "Answer Key", page: "answerkey", icon: "🗝️" },
     { label: "Syllabus", page: "syllabus", icon: "📘" },
+    { label: "Sarkari Kaam", page: "otherlinks", icon: "🔗", filter: "Sarkari Kaam" },
     { label: "Contact", page: "contact", icon: "📬" },
   ];
 
@@ -46,7 +47,8 @@ export default function App() {
     : (NAV.find(l => l.page === page)?.label || 
        (page === 'about' ? 'About Us' : 
         page === 'privacy' ? 'Privacy Policy' : 
-        page === 'terms' ? 'Terms & Conditions' : 'Search'));
+        page === 'terms' ? 'Terms & Conditions' : 
+        page === 'otherlinks' ? 'Sarkari Kaam Services' : 'Search'));
 
   return (
     <div className="app">
@@ -94,6 +96,8 @@ export default function App() {
               onClick={() => {
                 if (link.page === 'jobs') {
                   setCatFilter('All');
+                } else if (link.page === 'otherlinks') {
+                  setCatFilter(link.filter || 'Sarkari Kaam');
                 }
                 setPage(link.page);
               }}
