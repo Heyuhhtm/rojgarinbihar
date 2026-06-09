@@ -2,7 +2,7 @@ import React from 'react';
 import { WHATSAPP_NUMBER } from '../config';
 
 export default function WhatsAppButton() {
-  const isPlaceholder = WHATSAPP_NUMBER === "YOUR_WHATSAPP_NUMBER";
+  const isPlaceholder = WHATSAPP_NUMBER === "9304823713";
   const url = isPlaceholder
     ? "#"
     : `https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20RojgarInBihar,%20I%20have%20a%20query.`;
