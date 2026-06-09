@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PrivacyPolicyPage() {
+export default function PrivacyPolicyPage({ onBack }) {
   return (
     <div className="section-box">
       <div className="section-header" style={{ background: "#003366", fontSize: "15px" }}>
@@ -27,6 +27,32 @@ export default function PrivacyPolicyPage() {
         <p style={{ marginBottom: "12px" }}>
           By using our website, you hereby consent to our Privacy Policy and agree to its terms.
         </p>
+        {onBack && (
+          <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <button 
+              onClick={onBack} 
+              className="btn-back"
+              style={{ 
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: '#475569', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '10px 24px', 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                fontWeight: '600',
+                fontSize: '14px',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.background = '#334155'}
+              onMouseLeave={(e) => e.target.style.background = '#475569'}
+            >
+              &laquo; Back
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

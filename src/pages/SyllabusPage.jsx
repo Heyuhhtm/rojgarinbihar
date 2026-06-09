@@ -2,7 +2,7 @@ import React from 'react';
 import { SYLLABI } from '../data/jobsData';
 import CatPill from '../components/CatPill';
 
-export default function SyllabusPage() {
+export default function SyllabusPage({ onBack }) {
   return (
     <div>
       <div
@@ -27,6 +27,32 @@ export default function SyllabusPage() {
           </div>
         ))}
       </div>
+      {onBack && (
+        <div style={{ textAlign: 'center', marginTop: '24px', paddingBottom: '16px' }}>
+          <button 
+            onClick={onBack} 
+            className="btn-back"
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: '#475569', 
+              color: '#fff', 
+              border: 'none', 
+              padding: '10px 24px', 
+              borderRadius: '8px', 
+              cursor: 'pointer', 
+              fontWeight: '600',
+              fontSize: '14px',
+              transition: 'background 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.background = '#334155'}
+            onMouseLeave={(e) => e.target.style.background = '#475569'}
+          >
+            &laquo; Back
+          </button>
+        </div>
+      )}
     </div>
   );
 }

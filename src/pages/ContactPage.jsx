@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from '../config';
 
-export default function ContactPage() {
+export default function ContactPage({ onBack }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -119,6 +119,32 @@ export default function ContactPage() {
         }}>
           💼 Managed by Suraj Kumar Gupta
         </div>
+        {onBack && (
+          <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <button 
+              onClick={onBack} 
+              className="btn-back"
+              style={{ 
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: '#475569', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '10px 24px', 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                fontWeight: '600',
+                fontSize: '14px',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.background = '#334155'}
+              onMouseLeave={(e) => e.target.style.background = '#475569'}
+            >
+              &laquo; Back
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

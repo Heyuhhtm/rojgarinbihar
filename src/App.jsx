@@ -132,15 +132,15 @@ export default function App() {
         {page === "jobs" &&
           <FullListPage
             title={catFilter !== "All" ? `${catFilter} Jobs — Rojgar In Bihar 2026` : "Latest Online Form — Rojgar In Bihar 2026"}
-            color="#cc0000" items={JOBS} type="jobs" initialFilter={catFilter} onViewDetails={handleViewDetails}
+            color="#cc0000" items={JOBS} type="jobs" initialFilter={catFilter} onViewDetails={handleViewDetails} onBack={() => setPage("home")}
           />
         }
-        {page === "results" && <FullListPage title="Rojgar In Bihar Result 2026" color="#2e7d32" items={RESULTS} type="results" onViewDetails={handleViewDetails} />}
-        {page === "admitcard" && <FullListPage title="Admit Card 2026 — Download" color="#e65c00" items={ADMIT_CARDS} type="admit" onViewDetails={handleViewDetails} />}
-        {page === "answerkey" && <FullListPage title="Answer Key 2026 — Check Now" color="#6a1b9a" items={ANSWER_KEYS} type="answerkey" onViewDetails={handleViewDetails} />}
+        {page === "results" && <FullListPage title="Rojgar In Bihar Result 2026" color="#2e7d32" items={RESULTS} type="results" onViewDetails={handleViewDetails} onBack={() => setPage("home")} />}
+        {page === "admitcard" && <FullListPage title="Admit Card 2026 — Download" color="#e65c00" items={ADMIT_CARDS} type="admit" onViewDetails={handleViewDetails} onBack={() => setPage("home")} />}
+        {page === "answerkey" && <FullListPage title="Answer Key 2026 — Check Now" color="#6a1b9a" items={ANSWER_KEYS} type="answerkey" onViewDetails={handleViewDetails} onBack={() => setPage("home")} />}
         {page === "details" && <DetailPage selectedItem={selectedItem} setPage={setPage} />}
-        {page === "otherlinks" && <OtherLinksListPage category={catFilter} />}
-        {page === "state-list" && <StateListPage onStateSelect={(stateName) => { setStateFilter(stateName); setPage("statejobs"); }} />}
+        {page === "otherlinks" && <OtherLinksListPage category={catFilter} onBack={() => setPage("home")} />}
+        {page === "state-list" && <StateListPage onStateSelect={(stateName) => { setStateFilter(stateName); setPage("statejobs"); }} onBack={() => setPage("home")} />}
         {page === "statejobs" && (
           <FullListPage 
             title={`${stateFilter} Vacancies — Rojgar In Bihar 2026`} 
@@ -151,14 +151,15 @@ export default function App() {
             })} 
             type="jobs" 
             onViewDetails={handleViewDetails} 
+            onBack={() => setPage("state-list")}
           />
         )}
-        {page === "syllabus" && <SyllabusPage />}
-        {page === "search" && <SearchPage query={searchQuery} onViewDetails={handleViewDetails} />}
-        {page === "contact" && <ContactPage />}
-        {page === "about" && <AboutPage />}
-        {page === "privacy" && <PrivacyPolicyPage />}
-        {page === "terms" && <TermsConditionsPage />}
+        {page === "syllabus" && <SyllabusPage onBack={() => setPage("home")} />}
+        {page === "search" && <SearchPage query={searchQuery} onViewDetails={handleViewDetails} onBack={() => setPage("home")} />}
+        {page === "contact" && <ContactPage onBack={() => setPage("home")} />}
+        {page === "about" && <AboutPage onBack={() => setPage("home")} />}
+        {page === "privacy" && <PrivacyPolicyPage onBack={() => setPage("home")} />}
+        {page === "terms" && <TermsConditionsPage onBack={() => setPage("home")} />}
       </main>
 
       {/* ── FOOTER ── */}

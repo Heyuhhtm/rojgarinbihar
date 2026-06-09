@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TermsConditionsPage() {
+export default function TermsConditionsPage({ onBack }) {
   return (
     <div className="section-box">
       <div className="section-header" style={{ background: "#003366", fontSize: "15px" }}>
@@ -30,6 +30,32 @@ export default function TermsConditionsPage() {
         <p style={{ marginBottom: "12px" }}>
           We reserve the right to modify these terms and conditions at any time without prior notice.
         </p>
+        {onBack && (
+          <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <button 
+              onClick={onBack} 
+              className="btn-back"
+              style={{ 
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: '#475569', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '10px 24px', 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                fontWeight: '600',
+                fontSize: '14px',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.background = '#334155'}
+              onMouseLeave={(e) => e.target.style.background = '#475569'}
+            >
+              &laquo; Back
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

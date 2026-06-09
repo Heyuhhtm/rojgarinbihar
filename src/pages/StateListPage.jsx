@@ -1,7 +1,7 @@
 import React from 'react';
 import { STATES, JOBS } from '../data/jobsData';
 
-export default function StateListPage({ onStateSelect }) {
+export default function StateListPage({ onStateSelect, onBack }) {
   // Calculate dynamic count per state
   const getVacancyCount = (stateCode) => {
     return JOBS.filter(job => job.state === stateCode).length;
@@ -110,6 +110,32 @@ export default function StateListPage({ onStateSelect }) {
           })}
         </div>
       </div>
+      {onBack && (
+        <div style={{ textAlign: 'center', marginTop: '24px', paddingBottom: '16px' }}>
+          <button 
+            onClick={onBack} 
+            className="btn-back"
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: '#475569', 
+              color: '#fff', 
+              border: 'none', 
+              padding: '10px 24px', 
+              borderRadius: '8px', 
+              cursor: 'pointer', 
+              fontWeight: '600',
+              fontSize: '14px',
+              transition: 'background 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.background = '#334155'}
+            onMouseLeave={(e) => e.target.style.background = '#475569'}
+          >
+            &laquo; Back
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function AboutPage() {
+export default function AboutPage({ onBack }) {
   return (
     <div className="section-box">
       <div className="section-header" style={{ background: "#003366", fontSize: "15px" }}>
@@ -24,6 +24,32 @@ export default function AboutPage() {
         <div style={{ marginTop: "30px", borderTop: "1px solid #e2e8f0", paddingTop: "20px", textAlign: "center", fontWeight: "700", color: "#0f172a" }}>
           👤 Managed by: Suraj Kumar Gupta
         </div>
+        {onBack && (
+          <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <button 
+              onClick={onBack} 
+              className="btn-back"
+              style={{ 
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: '#475569', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '10px 24px', 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                fontWeight: '600',
+                fontSize: '14px',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.background = '#334155'}
+              onMouseLeave={(e) => e.target.style.background = '#475569'}
+            >
+              &laquo; Back
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
