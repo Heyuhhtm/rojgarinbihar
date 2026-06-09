@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { JOBS, RESULTS, ADMIT_CARDS, ANSWER_KEYS } from "./data/jobsData";
+import { JOBS, RESULTS, ADMIT_CARDS, ANSWER_KEYS, STATES } from "./data/jobsData";
 import Ticker from "./components/Ticker";
 import Sidebar from "./components/Sidebar";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import FullListPage from "./pages/FullListPage";
 import DetailPage from "./pages/DetailPage";
 import OtherLinksListPage from "./pages/OtherLinksListPage";
+import StateListPage from "./pages/StateListPage";
 import SyllabusPage from "./pages/SyllabusPage";
 import SearchPage from "./pages/SearchPage";
 import ContactPage from "./pages/ContactPage";
@@ -19,16 +20,18 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [catFilter, setCatFilter] = useState("All");
+  const [stateFilter, setStateFilter] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
   const NAV = [
     { label: "Home", page: "home", icon: "🏠" },
     { label: "Latest Jobs", page: "jobs", icon: "💼" },
+    { label: "State Jobs", page: "state-list", icon: "🗺️" },
     { label: "Results", page: "results", icon: "📊" },
     { label: "Admit Card", page: "admitcard", icon: "🎫" },
     { label: "Answer Key", page: "answerkey", icon: "🗝️" },
     { label: "Syllabus", page: "syllabus", icon: "📘" },
-    { label: "Sarkari Kaam", page: "otherlinks", icon: "🔗", filter: "Sarkari Kaam" },
+    { label: "Rojgar", page: "otherlinks", icon: "🔗", filter: "Rojgar" },
     { label: "Contact", page: "contact", icon: "📬" },
   ];
 
@@ -48,7 +51,9 @@ export default function App() {
        (page === 'about' ? 'About Us' : 
         page === 'privacy' ? 'Privacy Policy' : 
         page === 'terms' ? 'Terms & Conditions' : 
-        page === 'otherlinks' ? 'Sarkari Kaam Services' : 'Search'));
+        page === 'otherlinks' ? 'Rojgar Services' : 
+        page === 'state-list' ? 'State Wise Vacancy' : 
+        page === 'statejobs' ? `${stateFilter} Vacancies` : 'Search'));
 
   return (
     <div className="app">
@@ -97,7 +102,7 @@ export default function App() {
                 if (link.page === 'jobs') {
                   setCatFilter('All');
                 } else if (link.page === 'otherlinks') {
-                  setCatFilter(link.filter || 'Sarkari Kaam');
+                  setCatFilter(link.filter || 'Rojgar');
                 }
                 setPage(link.page);
               }}
@@ -123,7 +128,7 @@ export default function App() {
 
       {/* ── MAIN ── */}
       <main className="container main-content">
-        {page === "home" && <HomePage setPage={setPage} setCatFilter={setCatFilter} onViewDetails={handleViewDetails} />}
+        {page === "home" && <HomePage setPage={setPage} setCatFilter={setCatFilter} setStateFilter={setStateFilter} onViewDetails={handleViewDetails} />}
         {page === "jobs" &&
           <FullListPage
             title={catFilter !== "All" ? `${catFilter} Jobs — Rojgar In Bihar 2026` : "Latest Online Form — Rojgar In Bihar 2026"}
@@ -135,6 +140,19 @@ export default function App() {
         {page === "answerkey" && <FullListPage title="Answer Key 2026 — Check Now" color="#6a1b9a" items={ANSWER_KEYS} type="answerkey" onViewDetails={handleViewDetails} />}
         {page === "details" && <DetailPage selectedItem={selectedItem} setPage={setPage} />}
         {page === "otherlinks" && <OtherLinksListPage category={catFilter} />}
+        {page === "state-list" && <StateListPage onStateSelect={(stateName) => { setStateFilter(stateName); setPage("statejobs"); }} />}
+        {page === "statejobs" && (
+          <FullListPage 
+            title={`${stateFilter} Vacancies — Rojgar In Bihar 2026`} 
+            color="#0f172a" 
+            items={JOBS.filter(job => {
+              const st = STATES.find(s => s.name === stateFilter);
+              return job.state === st?.code;
+            })} 
+            type="jobs" 
+            onViewDetails={handleViewDetails} 
+          />
+        )}
         {page === "syllabus" && <SyllabusPage />}
         {page === "search" && <SearchPage query={searchQuery} onViewDetails={handleViewDetails} />}
         {page === "contact" && <ContactPage />}

@@ -2,21 +2,26 @@ import React from 'react';
 import { JOBS, RESULTS, ADMIT_CARDS, ANSWER_KEYS } from '../data/jobsData';
 import StatsBanner from '../components/StatsBanner';
 import CategoriesGrid from '../components/CategoriesGrid';
+import StateVacancyGrid from '../components/StateVacancyGrid';
 import SectionBox from '../components/SectionBox';
 import Sidebar from '../components/Sidebar';
 
-export default function HomePage({ setPage, setCatFilter, onViewDetails }) {
+export default function HomePage({ setPage, setCatFilter, setStateFilter, onViewDetails }) {
   return (
     <div className="home-grid">
       <div>
         <StatsBanner />
         <CategoriesGrid onFilter={category => {
           setCatFilter(category);
-          if (["UIDAI", "PAN", "Parivahan", "Sarkari Kaam", "Election", "Land Records", "Bijli Bill", "Mobile Services"].includes(category)) {
+          if (["UIDAI", "PAN", "Parivahan", "Rojgar", "Election", "Land Records", "Bijli Bill", "Mobile Services"].includes(category)) {
             setPage("otherlinks");
           } else {
             setPage("jobs");
           }
+        }} />
+        <StateVacancyGrid onStateSelect={stateName => {
+          setStateFilter(stateName);
+          setPage("statejobs");
         }} />
         <SectionBox
           title="Latest Online Form — Apply Now 2026" color="#cc0000" items={JOBS} type="jobs"
