@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { JOBS, RESULTS, ADMIT_CARDS, ANSWER_KEYS, STATES } from "./data/jobsData";
 import Ticker from "./components/Ticker";
 import Sidebar from "./components/Sidebar";
@@ -22,6 +22,20 @@ export default function App() {
   const [catFilter, setCatFilter] = useState("All");
   const [stateFilter, setStateFilter] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
+  
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-theme");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const NAV = [
     { label: "Home", page: "home", icon: "🏠" },
@@ -56,7 +70,7 @@ export default function App() {
         page === 'statejobs' ? `${stateFilter} Vacancies` : 'Search'));
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? "dark-theme" : ""}`}>
 
       {/* ── HEADER ── */}
       <header className="site-header">
@@ -75,18 +89,51 @@ export default function App() {
               <div className="logo-sub">rojgarinbihar.com</div>
             </div>
           </div>
-          <div>
-            <form onSubmit={handleSearch} className="search-form">
-              <input
-                type="text"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="Search Vacancy, Result, Admit Card..."
-                className="search-input"
-              />
-              <button type="submit" className="search-btn">🔍 Search</button>
-            </form>
-            <div className="header-sub-links">📱 App Available | 📺 YouTube | 📢 Telegram</div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "2px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <form onSubmit={handleSearch} className="search-form">
+                <input
+                  type="text"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  placeholder="Search Vacancy, Result..."
+                  className="search-input"
+                  style={{ width: "240px" }}
+                />
+                <button type="submit" className="search-btn">🔍 Search</button>
+              </form>
+              <button 
+                type="button" 
+                onClick={() => setDarkMode(!darkMode)} 
+                className="theme-toggle-btn"
+                title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              >
+                {darkMode ? "☀️ Light" : "🌙 Dark"}
+              </button>
+            </div>
+            <div className="search-suggestions">
+              <span className="suggestion-label">Suggested:</span>
+              {["SSC CGL", "Railway ALP", "BPSC", "UP Police"].map(tag => (
+                <span 
+                  key={tag} 
+                  className="suggestion-tag"
+                  onClick={() => {
+                    setSearch(tag);
+                    setSearchQuery(tag);
+                    setPage("search");
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="header-sub-links" style={{ marginTop: "4px" }}>
+              <span className="interactive-social" onClick={() => alert("Mobile App is coming soon! Stay tuned.")}>📱 App Available</span>
+              |
+              <span className="interactive-social" onClick={() => window.open("https://youtube.com/@rojgarinbihar", "_blank")}>📺 YouTube</span>
+              |
+              <span className="interactive-social" onClick={() => window.open("https://t.me/rojgarinbihar", "_blank")}>📢 Telegram</span>
+            </div>
           </div>
         </div>
       </header>
