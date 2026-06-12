@@ -13,7 +13,7 @@ export default function HomePage({ setPage, setCatFilter, setStateFilter, onView
         <StatsBanner />
         <CategoriesGrid onFilter={category => {
           setCatFilter(category);
-          if (["UIDAI", "PAN", "Parivahan", "Rojgar", "Election", "Land Records", "Bijli Bill", "Mobile Services"].includes(category)) {
+          if (["Certificates", "Cards", "Utility Bills", "Land Records", "Education"].includes(category)) {
             setPage("otherlinks");
           } else {
             setPage("jobs");
@@ -40,6 +40,34 @@ export default function HomePage({ setPage, setCatFilter, setStateFilter, onView
           title="Answer Key 2026" color="#6a1b9a" items={ANSWER_KEYS} type="answerkey"
           onViewAll={() => setPage("answerkey")} onViewDetails={onViewDetails}
         />
+
+        {/* ── "HOW THIS SITE HELPS YOU" SECTION ── */}
+        <section className="helps-section">
+          <h3 className="helps-title">How This Site Helps You / यह साइट आपकी कैसे मदद करती है</h3>
+          <p style={{ fontSize: '13px', color: '#475569', marginBottom: '16px', lineHeight: '1.6' }}>
+            Rojgar In Bihar is a dedicated portal built to help candidates, cyber café operators, and rural students access all Bihar state and central government vacancies and services from a single dashboard. (रोजगार इन बिहार एक समर्पित पोर्टल है जो सभी सरकारी नौकरियों और योजनाओं को एक मंच पर लाता है।)
+          </p>
+          <div className="helps-grid">
+            <div className="helps-card">
+              <h4 className="helps-card-title">🎯 Direct Official Links (आधिकारिक लिंक)</h4>
+              <p className="helps-card-text">
+                Save time and avoid spam. We provide direct, clean links to official government websites (.gov.in, .nic.in, .bihar.gov.in) with zero redirect ads. (बिना विज्ञापन सीधे आधिकारिक वेबसाइट्स के लिंक।)
+              </p>
+            </div>
+            <div className="helps-card">
+              <h4 className="helps-card-title">📝 Step-by-Step Guides (आवेदन मार्गदर्शिका)</h4>
+              <p className="helps-card-text">
+                Avoid form rejections. Every job and result has a clear "How to Apply / Check" instructions list tailored for rural candidates and café operators. (गलतियों से बचने के लिए फॉर्म भरने की आसान गाइड।)
+              </p>
+            </div>
+            <div className="helps-card">
+              <h4 className="helps-card-title">🗺️ One-Stop Bihar Portal (बिहार विशेष सेवाएं)</h4>
+              <p className="helps-card-text">
+                Access RTPS Bihar certificates, Bhu-Naksha land records, electricity bills, e-Shram, Ayushman cards, and state scholarships all in one tab. (बिहार राज्य की सभी जरूरी ऑनलाइन सेवाएं एक ही जगह।)
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
       <Sidebar setPage={setPage} setCatFilter={setCatFilter} onViewDetails={onViewDetails} />
     </div>

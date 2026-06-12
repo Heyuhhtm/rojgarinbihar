@@ -9,7 +9,7 @@ export default function CatPill({ category }) {
       borderRadius: "2px", marginRight: "6px", fontWeight: "600",
       border: `1px solid ${c.color}33`, display: "inline-block"
     }}>
-      {category}
+      {category} {c.hindi ? `/ ${c.hindi}` : ''}
     </span>
   );
 }

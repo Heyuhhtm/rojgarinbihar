@@ -1,7 +1,22 @@
 import React from 'react';
 
 function getJobDetails(item, type = "jobs") {
-  if (item.details) return item.details;
+  if (item.details) {
+    // If details exist but lack howToFill, append a default
+    if (!item.details.howToFill) {
+      item.details.howToFill = [
+        `Open the official portal using the 'Apply Online' link below. (नीचे दिए गए 'Apply Online' लिंक के माध्यम से आधिकारिक वेबसाइट खोलें।)`,
+        `Read the official advertisement carefully to verify eligibility criteria, post vacancies, and educational requirements. (आवेदन करने से पहले आधिकारिक विज्ञापन ध्यान से पढ़ें।)`,
+        `Click on the 'New Registration' or 'Apply' button for the specified recruitment post. (भर्ती पोस्ट के लिए 'New Registration' पर क्लिक करें।)`,
+        `Fill in the required personal, contact, and educational qualifications details accurately. (अपनी व्यक्तिगत, संपर्क और शैक्षणिक योग्यता विवरण सही-सही भरें।)`,
+        `Upload scanned copies of recent passport size photograph, signature, and other required certificates (such as caste, residence, or matric marksheets). (नवीनतम फोटो, हस्ताक्षर और आवश्यक दस्तावेज अपलोड करें।)`,
+        `Verify all entered details using the 'Preview' option before submitting the form. (फॉर्म सबमिट करने से पहले दर्ज किए गए सभी विवरणों को प्रीव्यू करें।)`,
+        `Pay the application fee online using Debit Card, Credit Card, Net Banking, or UPI (if applicable). (निर्धारित आवेदन शुल्क का ऑनलाइन भुगतान करें।)`,
+        `Submit the final application form and take a clear printout of the confirmation page for future use. (अंतिम सबमिशन के बाद कन्फर्मेशन पेज का प्रिंटआउट लें।)`
+      ];
+    }
+    return item.details;
+  }
 
   // Otherwise, let's construct a beautiful, detailed object dynamically!
   const title = item.title;
@@ -57,6 +72,8 @@ function getJobDetails(item, type = "jobs") {
     advt = matchParentheses[1];
   }
 
+  const officialLink = item.officialLink || item.url;
+
   // If this is not a job, we construct custom info structures
   if (type === "results") {
     return {
@@ -77,9 +94,16 @@ function getJobDetails(item, type = "jobs") {
       advtNumber: advt,
       departmentName: org,
       usefulLinks: [
-        { label: "Download Result PDF", url: item.url },
-        { label: "Download Cutoff Marks", url: item.url },
+        { label: "Download Result PDF", url: officialLink },
+        { label: "Download Cutoff Marks", url: officialLink },
         { label: "Official Website", url: item.url },
+      ],
+      howToFill: [
+        "Click on the 'Download Result' or 'Download Result PDF' link in the action bar or links table below. (निचे दिए गए 'Download Result' लिंक पर क्लिक करें।)",
+        "The official result PDF containing selected roll numbers will open. (चयनित अभ्यर्थियों के रोल नंबर वाली पीडीएफ फाइल खुलेगी।)",
+        "Press Ctrl+F (on computer) or use the PDF viewer search bar (on mobile) and enter your Roll Number. (Ctrl+F दबाकर अपना रोल नंबर खोजें।)",
+        "If your roll number matches, you have successfully qualified the exam! (यदि आपका रोल नंबर लिस्ट में मिल जाता है, तो आप सफल हुए हैं।)",
+        "Download and save the result sheet printout for future reference. (भविष्य के सत्यापन के लिए रिजल्ट शीट का प्रिंटआउट ले लें।)"
       ]
     };
   }
@@ -103,9 +127,17 @@ function getJobDetails(item, type = "jobs") {
       advtNumber: advt,
       departmentName: org,
       usefulLinks: [
-        { label: "Download Admit Card", url: item.url },
-        { label: "Download Exam Schedule Notice", url: item.url },
+        { label: "Download Admit Card", url: officialLink },
+        { label: "Download Exam Schedule Notice", url: officialLink },
         { label: "Official Website", url: item.url },
+      ],
+      howToFill: [
+        "Click on the 'Download Admit Card' button in the action bar or links section below. (प्रवेश पत्र के लिए नीचे दिए गए 'Download Admit Card' लिंक पर क्लिक करें।)",
+        "The official department login screen will appear in a new window. (विभाग का आधिकारिक लॉगिन पेज खुलेगा।)",
+        "Fill in your Registration Number / Registration ID and Date of Birth / Password. (अपना रजिस्ट्रेशन नंबर और जन्म तिथि/पासवर्ड भरें।)",
+        "Submit the security captcha code shown on screen. (दिए गए सुरक्षा कोड/कैप्चा को भरें।)",
+        "Click on 'Submit' or 'Login' to render the hall ticket. (सबमिट/लॉगिन बटन पर क्लिक करें।)",
+        "Verify your name, exam venue, shift time, and print it on A4 paper. (अपना नाम, परीक्षा केंद्र और समय जांचें और A4 पेपर पर प्रिंट कर लें।)"
       ]
     };
   }
@@ -130,9 +162,15 @@ function getJobDetails(item, type = "jobs") {
       advtNumber: advt,
       departmentName: org,
       usefulLinks: [
-        { label: "Download Answer Key / Responses", url: item.url },
-        { label: "Download Objection Instructions", url: item.url },
+        { label: "Download Answer Key / Responses", url: officialLink },
+        { label: "Download Objection Instructions", url: officialLink },
         { label: "Official Website", url: item.url },
+      ],
+      howToFill: [
+        "Click on 'Download Answer Key' link below to open response sheet. (आंसर की देखने के लिए नीचे दिए गए लिंक पर क्लिक करें।)",
+        "Match the set code (Set A, B, C, D) corresponding to your exam paper booklet. (अपने बुकलेट सेट कोड (सेट A, B, C, D) से मिलान करें।)",
+        "Calculate your score based on official marking rules. (अंकों की गणना करें।)",
+        "To raise objections against any wrong answer key, log in, submit valid proof, and pay the fee before the deadline. (आपत्ति दर्ज करने के लिए समय सीमा से पहले लॉगिन कर प्रमाण व शुल्क सबमिट करें।)"
       ]
     };
   }
@@ -239,6 +277,17 @@ function getJobDetails(item, type = "jobs") {
     "General Awareness: Current affairs, history, geography, constitution, science, bihar GK."
   ];
 
+  const defaultHowToFill = [
+    `Open the official portal using the 'Apply Online' link below. (नीचे दिए गए 'Apply Online' लिंक के माध्यम से आधिकारिक वेबसाइट खोलें।)`,
+    `Read the official advertisement carefully to verify eligibility criteria, post vacancies, and educational requirements. (आवेदन करने से पहले आधिकारिक विज्ञापन ध्यान से पढ़ें।)`,
+    `Click on the 'New Registration' or 'Apply' button for the specified recruitment post. (भर्ती पोस्ट के लिए 'New Registration' पर क्लिक करें।)`,
+    `Fill in the required personal, contact, and educational qualifications details accurately. (अपनी व्यक्तिगत, संपर्क और शैक्षणिक योग्यता विवरण सही-सही भरें।)`,
+    `Upload scanned copies of recent passport size photograph, signature, and other required certificates (such as caste, residence, or matric marksheets). (नवीनतम फोटो, हस्ताक्षर और आवश्यक दस्तावेज अपलोड करें।)`,
+    `Verify all entered details using the 'Preview' option before submitting the form. (फॉर्म सबमिट करने से पहले दर्ज किए गए सभी विवरणों को प्रीव्यू करें।)`,
+    `Pay the application fee online using Debit Card, Credit Card, Net Banking, or UPI (if applicable). (निर्धारित आवेदन शुल्क का ऑनलाइन भुगतान करें।)`,
+    `Submit the final application form and take a clear printout of the confirmation page for future use. (अंतिम सबमिशन के बाद कन्फर्मेशन पेज का प्रिंटआउट लें।)`
+  ];
+
   return {
     postDate: item.date,
     shortInfo: `Applications are invited for the post of ${title} under ${org}. Eligible candidates can apply online from the link provided in the important links section before the last date (${item.lastDate}). For selection criteria, eligibility details, and syllabus topics, please read the guidelines below.`,
@@ -258,8 +307,9 @@ function getJobDetails(item, type = "jobs") {
     departmentName: org,
     selectionProcess: selectionProcess,
     syllabus: syllabusTopics,
+    howToFill: defaultHowToFill,
     usefulLinks: [
-      { label: "Apply Online", url: item.url },
+      { label: "Apply Online", url: officialLink },
       { label: "Download Notification", url: item.url },
       { label: "Official Website", url: item.url },
       { label: "Download Syllabus", url: item.url },
@@ -309,6 +359,8 @@ export default function DetailPage({ selectedItem, setPage }) {
     shareLabel = "Share Answer Key";
   }
 
+  const officialLink = item.officialLink || item.url;
+
   return (
     <div className="sr-detail-container">
       <div className="sr-detail-header">
@@ -317,6 +369,7 @@ export default function DetailPage({ selectedItem, setPage }) {
         <div className="sr-detail-meta">
           {details.advtNumber && <span><strong>Advt No:</strong> {details.advtNumber}</span>}
           <span><strong>Post Date:</strong> {details.postDate}</span>
+          {item.lastUpdated && <span><strong>Last Updated:</strong> {item.lastUpdated}</span>}
           {type === "jobs" && <span><strong>Last Date:</strong> {item.lastDate}</span>}
           {type === "results" && <span><strong>Result Date:</strong> {item.date}</span>}
           {type === "admit" && <span><strong>Exam Date:</strong> {item.examDate || "As per Schedule"}</span>}
@@ -325,7 +378,7 @@ export default function DetailPage({ selectedItem, setPage }) {
       </div>
 
       <div className="sr-action-bar">
-        <a href={item.url} target="_blank" rel="noopener noreferrer" className="sr-btn sr-btn-success">
+        <a href={officialLink} target="_blank" rel="noopener noreferrer" className="sr-btn sr-btn-success">
           {primaryBtnLabel}
         </a>
         <a href={item.url} target="_blank" rel="noopener noreferrer" className="sr-btn sr-btn-primary">
@@ -468,6 +521,24 @@ export default function DetailPage({ selectedItem, setPage }) {
             </tr>
           )}
 
+          {/* Row: How to Apply / Form-filling Guide */}
+          {details.howToFill && details.howToFill.length > 0 && (
+            <tr>
+              <td>
+                <div className="sr-section-title" style={{ background: '#E65C00' }}>
+                  📝 How to Apply / Form-filling Guide (आवेदन / जाँच की प्रक्रिया)
+                </div>
+                <div className="sr-inner-padding">
+                  <ol className="sr-list" style={{ paddingLeft: '20px', lineHeight: '1.8' }}>
+                    {details.howToFill.map((step, i) => (
+                      <li key={i} style={{ marginBottom: '8px' }}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+              </td>
+            </tr>
+          )}
+
           {/* Row 6: Important Links Table */}
           <tr>
             <td>
@@ -497,7 +568,7 @@ export default function DetailPage({ selectedItem, setPage }) {
                         <tr>
                           <td style={{ fontWeight: 'bold' }}>Apply Online</td>
                           <td style={{ textAlign: 'center' }}>
-                            <a href={item.url} target="_blank" rel="noopener noreferrer" className="sr-btn sr-btn-success" style={{ display: 'inline-block', padding: '6px 16px', fontSize: '12px' }}>
+                            <a href={officialLink} target="_blank" rel="noopener noreferrer" className="sr-btn sr-btn-success" style={{ display: 'inline-block', padding: '6px 16px', fontSize: '12px' }}>
                               Apply Here
                             </a>
                           </td>

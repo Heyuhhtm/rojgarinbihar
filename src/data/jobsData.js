@@ -153,92 +153,64 @@ export const SYLLABI = [
 ];
 
 export const OTHER_LINKS = [
-  // UIDAI (Aadhaar)
-  { id: 1, title: "Download Aadhaar Card", category: "UIDAI", url: "https://myaadhaar.uidai.gov.in/genricDownloadAadhaar" },
-  { id: 2, title: "Update Aadhaar Address Online", category: "UIDAI", url: "https://myaadhaar.uidai.gov.in/address-update" },
-  { id: 3, title: "Check Aadhaar Update Status", category: "UIDAI", url: "https://myaadhaar.uidai.gov.in/check-aadhaar-status" },
-  { id: 4, title: "Order Aadhaar PVC Card", category: "UIDAI", url: "https://myaadhaar.uidai.gov.in/genricPVC" },
+  // Certificates (RTPS Bihar)
+  { id: 1, title: "RTPS Caste Certificate Apply (जाति प्रमाण पत्र आवेदन)", category: "Certificates", url: "https://serviceonline.bihar.gov.in/", isHot: true },
+  { id: 2, title: "RTPS Residence Certificate Apply (निवास प्रमाण पत्र आवेदन)", category: "Certificates", url: "https://serviceonline.bihar.gov.in/", isHot: true },
+  { id: 3, title: "RTPS Income Certificate Apply (आय प्रमाण पत्र आवेदन)", category: "Certificates", url: "https://serviceonline.bihar.gov.in/", isHot: true },
+  { id: 4, title: "RTPS Birth & Death Certificate Registration (जन्म एवं मृत्यु प्रमाण पत्र)", category: "Certificates", url: "https://serviceonline.bihar.gov.in/" },
+  { id: 5, title: "Check RTPS Application Status (आवेदन की स्थिति देखें)", category: "Certificates", url: "https://serviceonline.bihar.gov.in/", isHot: true },
+  { id: 6, title: "Download RTPS Certificate Online (प्रमाण पत्र डाउनलोड करें)", category: "Certificates", url: "https://serviceonline.bihar.gov.in/", isHot: true },
 
-  // PAN Card
-  { id: 5, title: "Apply for New PAN Card (NSDL/Protean)", category: "PAN", url: "https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" },
-  { id: 6, title: "Apply for New PAN Card (UTIITSL)", category: "PAN", url: "https://www.pan.utiitsl.com/PAN/newA.html" },
-  { id: 7, title: "Link Aadhaar with PAN", category: "PAN", url: "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/bl-link-aadhaar" },
-  { id: 8, title: "Check PAN Application Status", category: "PAN", url: "https://tin.tin.nsdl.com/pantan/StatusTrack.html" },
+  // Cards
+  { id: 7, title: "Download Aadhaar Card Online (आधार कार्ड डाउनलोड)", category: "Cards", url: "https://myaadhaar.uidai.gov.in/genricDownloadAadhaar", isHot: true },
+  { id: 8, title: "Update Aadhaar Address & Details Online (आधार सुधार)", category: "Cards", url: "https://myaadhaar.uidai.gov.in/address-update" },
+  { id: 9, title: "Apply for New PAN Card Online (NSDL/Protean) (नया पैन कार्ड)", category: "Cards", url: "https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" },
+  { id: 10, title: "Link Aadhaar Card with PAN (पैन-आधार लिंक करें)", category: "Cards", url: "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/bl-link-aadhaar", isHot: true },
+  { id: 11, title: "Voter ID Card Download & Correction (NVSP/ECI) (वोटर कार्ड डाउनलोड)", category: "Cards", url: "https://voters.eci.gov.in/", isHot: true },
+  { id: 12, title: "e-Shram Card Registration & Update (ई-श्रम कार्ड)", category: "Cards", url: "https://eshram.gov.in/" },
+  { id: 13, title: "Ayushman Bharat Golden Health Card Beneficiary Portal (आयुष्मान कार्ड)", category: "Cards", url: "https://beneficiary.nha.gov.in/", isHot: true },
+  { id: 14, title: "Ration Card Apply Online & List (EPDS Bihar) (राशन कार्ड)", category: "Cards", url: "http://epds.bihar.gov.in/", isHot: true },
+  { id: 15, title: "Bihar Labour Card Online Registration (BOCW) (लेबर कार्ड)", category: "Cards", url: "http://bocw.bihar.gov.in/" },
 
-  // Parivahan
-  { id: 9, title: "Pay Traffic e-Challan Online", category: "Parivahan", url: "https://echallan.parivahan.gov.in/" },
-  { id: 10, title: "Driving License Services (Sarathi)", category: "Parivahan", url: "https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do" },
-  { id: 11, title: "Vehicle Related Services (Vahan)", category: "Parivahan", url: "https://vahan.parivahan.gov.in/vahanservice/vahan/ui/statevalidation/homepage.xhtml" },
+  // Utility Bills
+  { id: 16, title: "NBPDCL North Bihar Electricity Bill Payment (उत्तरी बिहार बिजली बिल)", category: "Utility Bills", url: "https://www.nbpdcl.co.in/", isHot: true },
+  { id: 17, title: "SBPDCL South Bihar Electricity Bill Payment (दक्षिणी बिहार बिजली बिल)", category: "Utility Bills", url: "https://www.sbpdcl.co.in/", isHot: true },
+  { id: 18, title: "Pay Traffic e-Challan Online (यातायात चालान भुगतान)", category: "Utility Bills", url: "https://echallan.parivahan.gov.in/" },
+  { id: 19, title: "Driving License Online Services (Sarathi) (ड्राइविंग लाइसेंस)", category: "Utility Bills", url: "https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do", isHot: true },
+  { id: 20, title: "Vehicle Registration & Services (Vahan) (वाहन पंजीकरण)", category: "Utility Bills", url: "https://vahan.parivahan.gov.in/vahanservice/vahan/ui/statevalidation/homepage.xhtml" },
 
-  // Election (चुनाव)
-  { id: 12, title: "बिहार 2003 वोटर लिस्ट (Bihar Voter List 2003)", category: "Election", url: "https://voters.eci.gov.in/bh_2003_eroll" },
-  { id: 13, title: "2003 बिहार मतदाता सूची में नाम खोजें (Search Name in 2003 E-Roll)", category: "Election", url: "https://voters.eci.gov.in/bh_2003_eroll" },
-  { id: 14, title: "UP पंचायत चुनाव वोटर लिस्ट 2025 (UP Panchayat Election Voter List)", category: "Election", url: "https://sec.up.nic.in/" },
-  { id: 15, title: "यूपी पंचायत चुनाव (प्रधानी) सीट आरक्षण (UP Panchayat Reservation)", category: "Election", url: "https://sec.up.nic.in/" },
-  { id: 16, title: "राजस्थान ग्राम पंचायत चुनाव (सरपंच) 2025 (Rajasthan Sarpanch Chunav)", category: "Election", url: "https://sec.rajasthan.gov.in/" },
-  { id: 17, title: "सरपंच / प्रधान / मुखिया किस काम का कितना पैसा निकला जांचें", category: "Election", url: "https://egramswaraj.gov.in/" },
+  // Land Records
+  { id: 21, title: "Bihar Land Records - Jamabandi & Bhulekh (अपना खाता / जमाबंदी)", category: "Land Records", url: "https://biharbhumi.bihar.gov.in/", isHot: true },
+  { id: 22, title: "Bhu Naksha Bihar - View Land Map (भू-नक्शा बिहार)", category: "Land Records", url: "https://biharbhumi.bihar.gov.in/" },
+  { id: 23, title: "Land Registry Details & Search Online (भूमि रजिस्ट्री खोजें)", category: "Land Records", url: "http://bhumijankari.bihar.gov.in/", isHot: true },
+  { id: 24, title: "Land Dispute Status & DCLR Court Cases (भूमि विवाद स्थिति)", category: "Land Records", url: "https://biharbhumi.bihar.gov.in/" },
 
-  // Land Records (तहसील के कार्य)
-  { id: 18, title: "जमीन विवाद में है या नहीं जाने (UP Bhulekh Land Dispute Status)", category: "Land Records", url: "https://upbhulekh.gov.in/#/home" },
-  { id: 19, title: "भू नक्शा - जमीन का नक्शा देखें (Bhu Naksha Map)", category: "Land Records", url: "https://biharbhumi.bihar.gov.in/" },
-  { id: 20, title: "भूलेख राज्यवार सूची (Bhulekh State Wise Land Records)", category: "Land Records", url: "https://biharbhumi.bihar.gov.in/" },
-
-  // Bijli Bill (बिजली बिल)
-  { id: 21, title: "चेक बिजली बिल ऑनलाइन (Check Electricity Bill Online)", category: "Bijli Bill", url: "https://www.sbpdcl.co.in/" },
-  { id: 22, title: "बिजली बिल राहत योजना 2025 (Bijli Bill Rahat Yojana)", category: "Bijli Bill", url: "https://www.sbpdcl.co.in/" },
-  { id: 23, title: "बिजली बिल राहत कैलकुलेटर (Bijli Bill Relief Calculator)", category: "Bijli Bill", url: "https://www.sbpdcl.co.in/" },
-  { id: 24, title: "UP बिजली से सम्बन्धित काम (UP Electricity Services)", category: "Bijli Bill", url: "https://www.uppclonline.com/" },
-
-  // Mobile Services (सिम और मोबाइल)
-  { id: 25, title: "सञ्चार साथी - आपके नाम पर कितने सिम हैं जानें", category: "Mobile Services", url: "https://sancharsathi.gov.in/" },
-  { id: 26, title: "चोरी / खोया हुआ मोबाइल ब्लॉक करें (Block Lost/Stolen Mobile)", category: "Mobile Services", url: "https://sancharsathi.gov.in/" },
-  { id: 27, title: "खोया मोबाइल मिल जाने पर अनब्लॉक करें (Unblock Found Mobile)", category: "Mobile Services", url: "https://sancharsathi.gov.in/" },
-  { id: 28, title: "जांचें मोबाइल चोरी का या डुप्लीकेट तो नहीं (Check Genuine Device)", category: "Mobile Services", url: "https://sancharsathi.gov.in/" },
-
-  // Rojgar (रोजगार काम)
-  { id: 29, title: "MSME उद्यम रजिस्ट्रेशन सर्टिफिकेट (MSME Udyam Registration)", category: "Rojgar", url: "https://udyamregistration.gov.in/" },
-  { id: 30, title: "फॉर्मर रजिस्ट्री (Farmer Registry Online)", category: "Rojgar", url: "https://dbtagriculture.bihar.gov.in/" },
-  { id: 31, title: "पीएम उज्ज्वला नया गैस कनेक्शन आवेदन (PM Ujjwala Yojana)", category: "Rojgar", url: "https://www.pmuy.gov.in/" },
-  { id: 32, title: "पासपोर्ट सेवा ऑनलाइन आवेदन (Passport Seva Online)", category: "Rojgar", url: "https://www.passportindia.gov.in/" },
-  { id: 33, title: "पीएम किसान सम्मान निधि योजना (PM Kisan Yojana)", category: "Rojgar", url: "https://pmkisan.gov.in/" },
-  { id: 34, title: "पीएम आवास योजना ग्रामीण/शहरी (PM Awas Yojana)", category: "Rojgar", url: "https://pmayg.nic.in/" },
-  { id: 35, title: "नरेगा जॉब कार्ड लिस्ट & हाज़िरी (NREGA Job Card)", category: "Rojgar", url: "https://nrega.nic.in/" },
-  { id: 36, title: "ई श्रम कार्ड ऑनलाइन पंजीकरण (e-Shram Card Registration)", category: "Rojgar", url: "https://eshram.gov.in/" },
-  { id: 37, title: "आयुष्मान भारत गोल्डन हेल्थ कार्ड (Ayushman Card)", category: "Rojgar", url: "https://beneficiary.nha.gov.in/" },
-  { id: 38, title: "आभा डिजिटल हेल्थ कार्ड (ABHA Card)", category: "Rojgar", url: "https://abha.abdm.gov.in/" },
-  { id: 39, title: "APAAR ID कार्ड ऑनलाइन (APAAR Student ID Card)", category: "Rojgar", url: "https://apaar.education.gov.in/" },
-  { id: 40, title: "वोटर आईडी कार्ड डाउनलोड & सुधार (Voter ID Services)", category: "Rojgar", url: "https://voters.eci.gov.in/" },
-  { id: 41, title: "शौचालय योजना ग्रामीण (Swachh Bharat Toilet Scheme Rs. 12000)", category: "Rojgar", url: "https://sbm.gov.in/" },
-  { id: 42, title: "गैस सब्सिडी ऑनलाइन देखें (LPG Gas Subsidy Status)", category: "Rojgar", url: "https://mylpg.in/" },
-  { id: 43, title: "राशन कार्ड नई लिस्ट & आवेदन (Ration Card Services)", category: "Rojgar", url: "https://nfsa.gov.in/" },
-  { id: 44, title: "समग्र ID कार्ड (Samagra ID MP)", category: "Rojgar", url: "https://samagra.gov.in/" },
-  { id: 45, title: "NSP नेशनल स्कालरशिप पोर्टल OTR (NSP Scholarship)", category: "Rojgar", url: "https://scholarships.gov.in/" },
-  { id: 46, title: "LPG Gas eKYC ऑनलाइन करें (LPG e-KYC Update)", category: "Rojgar", url: "https://mylpg.in/" },
-  { id: 47, title: "बेरोजगारी भत्ता योजना आवेदन (Berozgari Bhatta Rs. 1500)", category: "Rojgar", url: "https://sewayojan.up.nic.in/IEP/JobseekerRegistration.aspx" },
-  { id: 48, title: "अन्तर्जातीय विवाह प्रोत्साहन योजना (Intercaste Marriage Scheme Rs. 2.5 Lakh)", category: "Rojgar", url: "https://saralharyana.gov.in/" },
+  // Education
+  { id: 25, title: "Bihar Student Credit Card Online Scheme (स्टूडेंट क्रेडिट कार्ड)", category: "Education", url: "https://www.7nishchay-yuyaupajmission.bihar.gov.in/", isHot: true },
+  { id: 26, title: "Mukhyamantri Balak / Balika Protsahan Yojana (10th pass scholarship)", category: "Education", url: "http://medhasoft.bih.nic.in/" },
+  { id: 27, title: "Mukhyamantri Kanya Utthan Yojana (12th & Graduation scholarship)", category: "Education", url: "http://medhasoft.bih.nic.in/", isHot: true },
+  { id: 28, title: "National Scholarship Portal (NSP) Online OTR (राष्ट्रीय स्कॉलरशिप)", category: "Education", url: "https://scholarships.gov.in/" },
+  { id: 29, title: "APAAR ID Card Online Registration (अपर छात्र आईडी)", category: "Education", url: "https://apaar.education.gov.in/" },
 ];
 
 export const CATEGORIES = [
-  { label: "Railway", color: "#2563eb", bg: "#eff6ff" },
-  { label: "Bank", color: "#059669", bg: "#ecfdf5" },
-  { label: "SSC", color: "#7c3aed", bg: "#f5f3ff" },
-  { label: "UPSC", color: "#dc2626", bg: "#fef2f2" },
-  { label: "Police", color: "#475569", bg: "#f8fafc" },
-  { label: "Teaching", color: "#ea580c", bg: "#fff7ed" },
-  { label: "Defence", color: "#16a34a", bg: "#f0fdf4" },
-  { label: "Medical", color: "#db2777", bg: "#fdf2f8" },
-  { label: "State PSC", color: "#4f46e5", bg: "#e0e7ff" },
-  { label: "Engineering", color: "#0d9488", bg: "#f0fdfa" },
-  { label: "Delhi", color: "#c2410c", bg: "#fff7ed" },
-  { label: "Parivahan", color: "#0891b2", bg: "#ecfeff" },
-  { label: "UIDAI", color: "#d97706", bg: "#fffbeb" },
-  { label: "PAN", color: "#854d0e", bg: "#fef9c3" },
-  { label: "Post", color: "#e11d48", bg: "#fff1f2" },
-  { label: "Rojgar", color: "#008080", bg: "#e6f2f2" },
-  { label: "Election", color: "#1e3a8a", bg: "#eff6ff" },
-  { label: "Land Records", color: "#6b21a8", bg: "#faf5ff" },
-  { label: "Bijli Bill", color: "#b45309", bg: "#fffbeb" },
-  { label: "Mobile Services", color: "#0369a1", bg: "#f0f9ff" },
+  { label: "Railway", hindi: "रेलवे", color: "#E65C00", bg: "#fff7ed" },
+  { label: "Bank", hindi: "बैंक", color: "#059669", bg: "#ecfdf5" },
+  { label: "SSC", hindi: "कर्मचारी चयन", color: "#7c3aed", bg: "#f5f3ff" },
+  { label: "UPSC", hindi: "संघ लोक सेवा", color: "#dc2626", bg: "#fef2f2" },
+  { label: "Police", hindi: "पुलिस", color: "#475569", bg: "#f8fafc" },
+  { label: "Teaching", hindi: "शिक्षक", color: "#ea580c", bg: "#fff7ed" },
+  { label: "Defence", hindi: "रक्षा दल", color: "#16a34a", bg: "#f0fdf4" },
+  { label: "Medical", hindi: "चिकित्सा", color: "#db2777", bg: "#fdf2f8" },
+  { label: "State PSC", hindi: "राज्य आयोग", color: "#4f46e5", bg: "#e0e7ff" },
+  { label: "Engineering", hindi: "इंजीनियरिंग", color: "#0d9488", bg: "#f0fdfa" },
+  { label: "Delhi", hindi: "दिल्ली भर्ती", color: "#c2410c", bg: "#fff7ed" },
+  { label: "Post", hindi: "डाक विभाग", color: "#e11d48", bg: "#fff1f2" },
+  { label: "Certificates", hindi: "प्रमाण पत्र", color: "#0891b2", bg: "#ecfeff" },
+  { label: "Cards", hindi: "सरकारी कार्ड", color: "#d97706", bg: "#fffbeb" },
+  { label: "Utility Bills", hindi: "बिजली बिल व भुगतान", color: "#854d0e", bg: "#fef9c3" },
+  { label: "Land Records", hindi: "भूमि जानकारी", color: "#6b21a8", bg: "#faf5ff" },
+  { label: "Education", hindi: "शिक्षा व छात्रवृत्ति", color: "#008080", bg: "#e6f2f2" },
 ];
 
 export const STATES = [
@@ -266,3 +238,17 @@ export const TICKER_ITEMS = [
   "🔴 UP Police Constable 52,699 Vacancies Coming Soon!",
   "🔴 IBPS RRB XII Application Started for 8,500+ Posts",
 ];
+
+// Data standardization to ensure every entry has lastUpdated and officialLink fields
+JOBS.forEach(item => {
+  if (!item.lastUpdated) item.lastUpdated = item.date;
+  if (!item.officialLink) item.officialLink = item.url;
+});
+RESULTS.forEach(item => {
+  if (!item.lastUpdated) item.lastUpdated = item.date;
+  if (!item.officialLink) item.officialLink = item.url;
+});
+ADMIT_CARDS.forEach(item => {
+  if (!item.lastUpdated) item.lastUpdated = item.date;
+  if (!item.officialLink) item.officialLink = item.url;
+});

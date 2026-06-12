@@ -15,7 +15,7 @@ export default function CategoriesGrid({ onFilter }) {
             style={{ background: cat.color }}
             onClick={() => onFilter(cat.label)}
           >
-            {cat.label}
+            {cat.label} {cat.hindi ? `/ ${cat.hindi}` : ''}
           </button>
         ))}
       </div>

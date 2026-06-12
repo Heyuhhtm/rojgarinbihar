@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { JOBS, RESULTS, ADMIT_CARDS, ANSWER_KEYS, STATES } from "./data/jobsData";
+import { JOBS, RESULTS, ADMIT_CARDS, ANSWER_KEYS, STATES, OTHER_LINKS } from "./data/jobsData";
 import Ticker from "./components/Ticker";
 import Sidebar from "./components/Sidebar";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -22,6 +22,7 @@ export default function App() {
   const [catFilter, setCatFilter] = useState("All");
   const [stateFilter, setStateFilter] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
+  const [showAppToast, setShowAppToast] = useState(false);
   
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
@@ -38,15 +39,15 @@ export default function App() {
   }, [darkMode]);
 
   const NAV = [
-    { label: "Home", page: "home", icon: "🏠" },
-    { label: "Latest Jobs", page: "jobs", icon: "💼" },
-    { label: "State Jobs", page: "state-list", icon: "🗺️" },
-    { label: "Results", page: "results", icon: "📊" },
-    { label: "Admit Card", page: "admitcard", icon: "🎫" },
-    { label: "Answer Key", page: "answerkey", icon: "🗝️" },
-    { label: "Syllabus", page: "syllabus", icon: "📘" },
-    { label: "Rojgar", page: "otherlinks", icon: "🔗", filter: "Rojgar" },
-    { label: "Contact", page: "contact", icon: "📬" },
+    { label: "Home", hindi: "मुख्य पृष्ठ", page: "home", icon: "🏠" },
+    { label: "Latest Jobs", hindi: "नवीनतम नौकरियाँ", page: "jobs", icon: "💼" },
+    { label: "State Jobs", hindi: "राज्य नौकरियाँ", page: "state-list", icon: "🗺️" },
+    { label: "Results", hindi: "परीक्षा परिणाम", page: "results", icon: "📊" },
+    { label: "Admit Card", hindi: "प्रवेश पत्र", page: "admitcard", icon: "🎫" },
+    { label: "Answer Key", hindi: "उत्तर कुंजी", page: "answerkey", icon: "🗝️" },
+    { label: "Syllabus", hindi: "पाठ्यक्रम", page: "syllabus", icon: "📘" },
+    { label: "Rojgar", hindi: "रोजगार सेवाएं", page: "otherlinks", icon: "🔗", filter: "Certificates" },
+    { label: "Contact", hindi: "संपर्क करें", page: "contact", icon: "📬" },
   ];
 
   const handleSearch = e => {
@@ -69,6 +70,31 @@ export default function App() {
         page === 'state-list' ? 'State Wise Vacancy' : 
         page === 'statejobs' ? `${stateFilter} Vacancies` : 'Search'));
 
+  // Get dynamic suggestions from hot items
+  const hotJobs = JOBS.filter(j => j.isHot).map(j => {
+    if (j.title.includes("SSC CGL")) return "SSC CGL";
+    if (j.title.includes("RRB ALP")) return "RRB ALP";
+    if (j.title.includes("BPSC")) return "BPSC";
+    if (j.title.includes("Bihar Police")) return "Bihar Police";
+    if (j.title.includes("UP Police")) return "UP Police";
+    return j.title.split(" ").slice(0, 2).join(" ");
+  });
+  const hotLinks = OTHER_LINKS.filter(l => l.isHot).map(l => {
+    if (l.title.includes("Aadhaar")) return "Aadhaar";
+    if (l.title.includes("Caste")) return "Caste Cert";
+    if (l.title.includes("Income")) return "Income Cert";
+    if (l.title.includes("Ration")) return "Ration Card";
+    if (l.title.includes("Land")) return "Land Record";
+    return l.title.split(" ").slice(0, 2).join(" ");
+  });
+  const searchSuggestions = [...new Set([...hotJobs, ...hotLinks])].slice(0, 4);
+
+  // Get dynamic trending text
+  const trendingJobs = JOBS.filter(j => j.isHot).slice(0, 2);
+  const trendingText = trendingJobs.length >= 2
+    ? `📢 ${trendingJobs[0].title.split(" 2026")[0]} (${trendingJobs[0].posts} Posts) | ${trendingJobs[1].title.split(" 2026")[0]} (${trendingJobs[1].posts} Posts) | Apply Now!`
+    : "📢 Latest Government Vacancies & Sarkari Result Updates | Apply Now!";
+
   return (
     <div className={`app ${darkMode ? "dark-theme" : ""}`}>
 
@@ -76,13 +102,8 @@ export default function App() {
       <header className="site-header">
         <div className="container header-inner">
           <div className="logo-wrap" onClick={() => setPage("home")} style={{ cursor: "pointer" }}>
-            <div className="logo-circle" title="Rojgar In Bihar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "22px", height: "22px" }}>
-                <rect x="3" y="8" width="18" height="13" rx="2" />
-                <path d="M16 8V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3" />
-                <path d="M12 17v-5" />
-                <path d="M9 14l3-3 3 3" />
-              </svg>
+            <div className="logo-circle" title="Rojgar In Bihar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span className="logo-emblem-text">RiB</span>
             </div>
             <div>
               <div className="logo-title">ROJGARINBIHAR ®</div>
@@ -113,7 +134,7 @@ export default function App() {
             </div>
             <div className="search-suggestions">
               <span className="suggestion-label">Suggested:</span>
-              {["SSC CGL", "Railway ALP", "BPSC", "UP Police"].map(tag => (
+              {searchSuggestions.map(tag => (
                 <span 
                   key={tag} 
                   className="suggestion-tag"
@@ -128,7 +149,7 @@ export default function App() {
               ))}
             </div>
             <div className="header-sub-links" style={{ marginTop: "4px" }}>
-              <span className="interactive-social" onClick={() => alert("Mobile App is coming soon! Stay tuned.")}>📱 App Available</span>
+              <span className="interactive-social" onClick={() => setShowAppToast(true)}>📱 App Available</span>
               |
               <span className="interactive-social" onClick={() => window.open("https://youtube.com/@rojgarinbihar", "_blank")}>📺 YouTube</span>
               |
@@ -149,12 +170,12 @@ export default function App() {
                 if (link.page === 'jobs') {
                   setCatFilter('All');
                 } else if (link.page === 'otherlinks') {
-                  setCatFilter(link.filter || 'Rojgar');
+                  setCatFilter(link.filter || 'Certificates');
                 }
                 setPage(link.page);
               }}
             >
-              {link.icon} {link.label}
+              {link.icon} {link.label} / {link.hindi}
             </button>
           ))}
         </div>
@@ -163,12 +184,22 @@ export default function App() {
       {/* ── TICKER ── */}
       <Ticker />
 
+      {/* ── DISCLAIMER BANNER ── */}
+      <div className="top-disclaimer-banner">
+        <div className="container top-disclaimer-inner">
+          <span className="disclaimer-badge">⚠️ Disclaimer / घोषणा</span>
+          <span className="disclaimer-text">
+            This is an informational portal. We provide direct links to official government websites — always verify details on the official site before applying. (यह एक सूचनात्मक पोर्टल है। हम सीधे आधिकारिक सरकारी वेबसाइटों के लिंक प्रदान करते हैं — आवेदन करने से पहले हमेशा आधिकारिक साइट पर विवरण सत्यापित करें।)
+          </span>
+        </div>
+      </div>
+
       {/* ── BREADCRUMB ── */}
       <div className="breadcrumb">
         <div className="container breadcrumb-inner">
           <span>🏠 Home {page !== "home" && `» ${pageLabel}`}</span>
           <span className="breadcrumb-alert">
-            📢 RRB ALP 9,144 Posts | SSC CGL 17,727 Posts | Apply Now!
+            {trendingText}
           </span>
         </div>
       </div>
@@ -274,6 +305,19 @@ export default function App() {
           <div>Disclaimer: Informational portal only. Verify from official websites.</div>
         </div>
       </footer>
+
+      {/* ── APP TOAST ── */}
+      {showAppToast && (
+        <div className="custom-toast">
+          <div className="toast-content">
+            <div className="toast-text">
+              📱 <strong>Mobile App Status / मोबाइल ऐप:</strong><br />
+              The Rojgar In Bihar official Android and iOS applications are currently under development. Stay tuned for instant job alerts! (रोजगार इन बिहार मोबाइल ऐप जल्द ही उपलब्ध होगा।)
+            </div>
+            <button className="toast-close-btn" onClick={() => setShowAppToast(false)}>×</button>
+          </div>
+        </div>
+      )}
 
       <WhatsAppButton />
     </div>

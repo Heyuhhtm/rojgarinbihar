@@ -13,7 +13,7 @@ export default function Sidebar({ setPage, setCatFilter, onViewDetails }) {
           { label: "Answer Key 2026", page: "answerkey", color: "#6a1b9a" },
           { label: "Syllabus 2026", page: "syllabus", color: "#1565c0" },
           { label: "State Wise Jobs", page: "state-list", color: "#003366" },
-          { label: "Rojgar Services", page: "otherlinks", color: "#008080", filter: "Rojgar" },
+          { label: "Rojgar Services", page: "otherlinks", color: "#008080", filter: "Certificates" },
           { label: "Contact Us", page: "contact", color: "#37474f" },
         ].map(link => (
           <div
